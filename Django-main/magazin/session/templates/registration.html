@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login</title>
+	<link rel="stylesheet" href="../static/2.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+     <div class="wrapper fadeInDown">
+  <div id="formContent">
+    <h2 class="active"> Registration</h2>
+    <div class="fadeIn first">
+    </div>
+    <form action="/session/register" method="POST">
+    {% csrf_token %}
+        <p class="error"></p>
+      <input type="text" id="name" name="name" class="fadeIn second"  placeholder="Name" required>
+      <input type="text" id="mail" name="mail" class="fadeIn second"  placeholder="Username" required>
+      <input type="text" id="cin" name="cin" class="fadeIn second"  placeholder="CIN" required>
+      <input type="password" id="password" name="psswd" class="fadeIn third"  placeholder="Password" required>
+      <input type="submit" name="ver" class="fadeIn fourth" value="Sign up">
+    </form>
+    <div id="formFooter">
+      <a class="underlineHover" href="{% url 'connexion' %}">Have you an account ?</a>
+    </div>
+  </div>
+</div>
+<script>
+  {% if messages %}
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: "{{ messages|first }}",
+    });
+  {% endif %}
+</script>
+     </body>
+</html>
